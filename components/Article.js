@@ -89,8 +89,8 @@ const data = [
   }
 ];
 
-/*
-  Step 1: Write a component called 'articleMaker' to create an article.
+
+ /* Step 1: Write a component called 'articleMaker' to create an article.
   Your component is a function that takes an article object as its only argument,
   and returns a DOM node looking like the one below:
 
@@ -104,7 +104,8 @@ const data = [
   </div>
 
   Step 2: Still inside `articleMaker`, add an event listener to the span.expandButton.
-  This listener should toggle the class 'article-open' on div.article.
+  This listener should toggle the class 'article-open' on div.article. /*
+
 
   Step 3: Don't forget to return something from your function!
 
@@ -113,4 +114,50 @@ const data = [
 
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
-*/
+
+
+/* Step 2 */
+expandButton.addEventListener('click', () => {
+  expandButton.classList.toggle("article-open");
+})
+return article;
+}
+
+/* Step 4 */
+data.forEach(object => {
+  const dataObject = articleMaker(object);
+  articleClass.appendChild(dataObject);
+})
+
+/* Step 5 */
+const articleClass = document.querySelector('.articles');
+
+function articleMaker (articleObject){
+  const article = document.createElement('div');
+  const title = document.createElement('h2');
+  const date = document.createElement('p');
+  const firstParagraph = document.createElement('p');
+  const secondParagraph = document.createElement('p');
+  const thirdParagraph = document.createElement('p');
+  const expandButton = document.createElement('span');
+
+
+  article.appendChild(title);
+  article.appendChild(date);
+  article.appendChild(firstParagraph);
+  article.appendChild(secondParagraph);
+  article.appendChild(thirdParagraph);
+  article.appendChild(expandButton);
+
+  article.classList.add('article');
+  date.classList.add('date');
+  expandButton.classList.add('expandButton')
+
+  title.textContent = articleObject.title;
+  date.textContent = articleObject.data;
+  firstParagraph.textContent = articleObject.firstParagraph;
+  secondParagraph.textContent = articleObject.secondParagraph;
+  thirdParagraph.textContent = articleObject.thirdParagraph;
+
+
+  
